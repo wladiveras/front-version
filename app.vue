@@ -3,7 +3,9 @@
   <NuxtLoadingIndicator />
  
   <NuxtLayout>
-    <NuxtPage page-key="static" />
+    <UContainer>
+      <NuxtPage page-key="static" />
+    </UContainer>
   </NuxtLayout>
 </template>
 

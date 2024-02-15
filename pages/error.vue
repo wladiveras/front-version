@@ -1,9 +1,11 @@
 <template>
-  <NuxtPage />
+  <div>
+    <NuxtPage />
+  </div>
 </template>
   
   <script setup lang="ts">
  definePageMeta({
-  layout: 'error'
+  //layout: 'guest'
 })
   </script>

@@ -1,10 +1,9 @@
 import colors from '#ui-colors'
-import type { NotificationColor } from '~~/types/components/notification'
+import type { NotificationColor } from '#ui/types'
 
 const toast = useToast()
 
 export const useNotification = () => {
-
 
     const createToast = (type: 'error' | 'warn' | 'info' | 'success', title: string, description: string, timeout?: number) => {
         const icon = {

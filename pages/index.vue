@@ -1,7 +1,7 @@
 <template>
   <div>
-    <NuxtLink to="/restrict">
-      Restrict
+    <NuxtLink to="/home">
+      home
     </NuxtLink>
 
     <!-- test icon module -->

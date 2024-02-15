@@ -19,7 +19,7 @@ useHead({
     { name: 'description', content: config.public.description }
   ],
   bodyAttrs: {
-    class: 'test'
+    class: 'test-body-class'
   }
 })
 </script>
