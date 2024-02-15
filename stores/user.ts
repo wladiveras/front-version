@@ -15,7 +15,7 @@ export const useUserStore = defineStore('user', {
     getUser: (state) => state.user,
     getUsers: (state) => state.users,
     isLoading: (state) => state.loading,
-    isConnect: (state) => Boolean(state.auth),
+    isConnect: (state) => true, //Boolean(state.auth),
   },
   actions: {
     async fetchUser(id: number): Promise<void> {

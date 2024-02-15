@@ -1,47 +1,33 @@
-import { ref, computed } from 'vue'
-import type { NotificationT } from '~~/types/components/notification'
+import colors from '#ui-colors'
+import type { NotificationColor } from '~~/types/components/notification'
 
-export function useNotification() {
+const toast = useToast()
 
-    const show = ref(false)
+export const useNotification = () => {
 
-    const notification = computed({
-        get: () => ({
-            show: show.value,
-            icon: '',
-            color: '',
-            variant: '',
-            title: '',
-            description: '',
-        }),
-        set: (value: NotificationT) => {
-            show.value = value.show || false
-            notification.value.icon = value.icon || ''
-            notification.value.color = value.color || ''
-            notification.value.variant = value.variant || ''
-            notification.value.title = value.title || ''
-            notification.value.description = value.description || ''
-        },
-    })
 
-    function showNotification(options: NotificationT) {
-        notification.value = {
-            show: true,
-            icon: options.icon,
-            color: options.color,
-            variant: options.variant,
-            title: options.title,
-            description: options.description,
-        }
+    const createToast = (type: 'error' | 'warn' | 'info' | 'success', title: string, description: string, timeout?: number) => {
+        const icon = {
+            error: 'i-heroicons-solid-x-circle',
+            warn: 'i-heroicons-solid-exclamation-circle',
+            info: 'i-heroicons-solid-information-circle',
+            success: 'i-heroicons-solid-check-circle',
+        }[type]
+
+        const color: NotificationColor = {
+            error: colors[0],
+            warn: colors[3],
+            info: colors[17],
+            success: colors[5],
+        }[type]
+
+        toast.add({ icon, color, title, description, timeout })
     }
 
-    function hideNotification() {
-        show.value = false
-    }
+    const error = (title: string, description: string, timeout?: number) => createToast('error', title, description, timeout)
+    const warn = (title: string, description: string, timeout?: number) => createToast('warn', title, description, timeout)
+    const info = (title: string, description: string, timeout?: number) => createToast('info', title, description, timeout)
+    const success = (title: string, description: string, timeout?: number) => createToast('success', title, description, timeout)
 
-    return {
-        notification,
-        showNotification,
-        hideNotification,
-    }
+    return { error, warn, info, success }
 }

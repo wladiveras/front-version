@@ -1,15 +1,13 @@
 
   
 <template>
-  <html>
-    <NuxtLoadingIndicator />
+  <div>
     <header>Pre Setup</header>
     <hr>
     <slot />
-
     <hr>
     <footer>Make with ❤️</footer>
-  </html>
+  </div>
 </template>
 
 <script setup lang="ts">

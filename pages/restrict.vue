@@ -1,11 +1,11 @@
 <template>
-  <NuxtLayout>
-    <div>
+  <div>
+    <NuxtLayout>
       <NuxtLink to="/">
         voltar pro inicio
       </NuxtLink>
-    </div>
-  </NuxtLayout>
+    </NuxtLayout>
+  </div>
 </template>
   
   <script setup lang="ts">

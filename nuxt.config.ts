@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   ssr: false,
   devtools: { enabled: true },
-
   app: {
     head: {
       charset: 'utf-8',
@@ -10,6 +9,7 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: 'page', mode: 'out-in' }
   },
+
   runtimeConfig: {
     public: {
       name: process.env.NUXT_PROJECT_NAME || 'Nuxt',
@@ -24,19 +24,34 @@ export default defineNuxtConfig({
       }
     }
   },
+
   colorMode: {
     preference: 'dark'
   },
+
   typescript: {
     typeCheck: true,
     strict: true
   },
+
   eslint: {},
+
+  googleFonts: {
+    display: 'swap',
+    download: true,
+    families: {
+      'DM+Sans': [400, 500, 600, 700]
+    }
+  },
+  css: [
+    '~/assets/css/main.css'
+  ],
   modules: [
     '@pinia/nuxt',
     '@nuxt/ui',
     '@nuxtjs/eslint-module',
     '@vueuse/nuxt',
     '@formkit/auto-animate',
+    '@nuxtjs/google-fonts',
   ],
 })

@@ -1,10 +1,6 @@
 <template>
-  <NuxtLayout>
-    <div>
-      <NuxtLink to="/">
-        voltar pro inicio
-      </NuxtLink>
-    </div>
+  <NuxtLayout name="error">
+    <NuxtPage />
   </NuxtLayout>
 </template>
   

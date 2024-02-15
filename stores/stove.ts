@@ -21,17 +21,17 @@ export const useStovesStore = defineStore('author-store', {
                 toast.add({ title: `error ${e}` })
             }
         },
-        async create(name: string) {
+        async getOne(id: number) {
             await $fetch('/api/stove', {
                 method: 'GET',
-                body: { name }
+                body: { id }
             })
                 .catch((e) => {
                     toast.add({ title: `error ${e}` })
                 })
                 .then(async () => {
                     await this.getAll();
-                    this.$toast.show(`Stove created`)
+                    //alert
                 });
         },
         async create(name: string) {
@@ -44,7 +44,7 @@ export const useStovesStore = defineStore('author-store', {
                 })
                 .then(async () => {
                     await this.getAll();
-                    this.$toast.show(`Stove created`)
+                    //alert
                 });
         },
         async update(id: string, name: string) {
@@ -53,11 +53,11 @@ export const useStovesStore = defineStore('author-store', {
                 body: { name }
             })
                 .catch((e) => {
-                    this.$toast.error(`error ${e}`)
+                    //alert
                 })
                 .then(async () => {
                     await this.getAll();
-                    this.$toast.show(`Stove updated`)
+                    //alert
                 });
         },
 
@@ -66,11 +66,11 @@ export const useStovesStore = defineStore('author-store', {
                 method: 'DELETE'
             })
                 .catch((e) => {
-                    this.$toast.error(`error ${e}`)
+                    //alert
                 })
                 .then(async () => {
                     await this.getAll();
-                    this.$toast.show(`Stove removed`)
+                    //alert
                 });
         }
     }
