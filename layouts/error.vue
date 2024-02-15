@@ -1,7 +1,6 @@
 <template>
   <div>
-    <NuxtLoadingIndicator />
-    <slot />
+    <h1>Something wrong.</h1>
   </div>
 </template>
 
@@ -9,7 +8,7 @@
 const config = useRuntimeConfig()
 
 useHead({
-  title: config.public.name,
+  title: 'Something wrong...',
   meta: [
     { name: 'description', content: config.public.description }
   ],

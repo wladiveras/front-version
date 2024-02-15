@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-    }
+    },
+    pageTransition: { name: 'page', mode: 'out-in' }
   },
   runtimeConfig: {
     public: {
@@ -16,13 +17,19 @@ export default defineNuxtConfig({
       apiUrl: process.env.NUXT_PUBLIC_API_BASE || '/api',
     }
   },
+  colorMode: {
+    preference: 'dark'
+  },
   typescript: {
     typeCheck: true,
     strict: true
   },
-
+  eslint: {},
   modules: [
     '@pinia/nuxt',
     '@nuxt/ui',
+    '@nuxtjs/eslint-module',
+    '@vueuse/nuxt',
+    '@formkit/auto-animate'
   ],
 })

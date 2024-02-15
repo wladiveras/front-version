@@ -1,7 +1,10 @@
-function isAuthenticated(): boolean { return false }
 
-export default defineNuxtRouteMiddleware((to, from) => {
+const store = useUserStore()
+
+function isAuthenticated(): boolean { return store.isConnect }
+
+export default defineNuxtRouteMiddleware(() => {
   if (isAuthenticated() === false) {
-    return navigateTo('/home')
+    return navigateTo('/')
   }
 })
