@@ -1,16 +1,6 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false,
   devtools: { enabled: true },
-
-  app: {
-    head: {
-      charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1',
-    },
-    pageTransition: { name: 'page', mode: 'out-in' },
-    layoutTransition: { name: 'page', mode: 'out-in' }
-  },
 
   runtimeConfig: {
     public: {
@@ -27,16 +17,72 @@ export default defineNuxtConfig({
     }
   },
 
+  app: {
+    head: {
+      title: 'Interview Project',
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'ElementPlus + Nuxt3',
+        },
+      ],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    }
+  },
+
+  css: ['~/assets/scss/index.scss'],
+
+  modules: [
+    '@pinia/nuxt',
+    '@vueuse/nuxt',
+    '@unocss/nuxt',
+    '@element-plus/nuxt',
+    '@nuxtjs/eslint-module',
+    '@formkit/auto-animate',
+    '@nuxtjs/google-fonts',
+    '@nuxtjs/color-mode',
+    'nuxt-icon'
+  ],
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "@/assets/scss/element/index.scss" as element;`,
+        },
+      },
+    },
+  },
+
+  unocss: {
+    uno: true,
+    attributify: true,
+    icons: {
+      scale: 1.2,
+    },
+  },
+
+  elementPlus: {
+    icon: 'ElIcon',
+    importStyle: 'scss',
+    themes: ['dark'],
+  },
+
   colorMode: {
     preference: 'dark'
   },
 
-  typescript: {
-    typeCheck: true,
-    strict: true
+  vueuse: {
+    ssrHandlers: true,
   },
 
-  eslint: {},
+  typescript: {
+    typeCheck: true,
+    strict: true,
+    shim: false,
+  },
 
   googleFonts: {
     display: 'swap',
@@ -44,13 +90,5 @@ export default defineNuxtConfig({
     families: {
       'DM+Sans': [400, 500, 600, 700]
     }
-  },
-  modules: [
-    '@pinia/nuxt',
-    '@nuxt/ui',
-    '@nuxtjs/eslint-module',
-    '@vueuse/nuxt',
-    '@formkit/auto-animate',
-    '@nuxtjs/google-fonts',
-  ],
+  }
 })

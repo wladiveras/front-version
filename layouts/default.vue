@@ -2,11 +2,12 @@
   
 <template>
   <div>
-    <header>Pre Setup</header>
+    <BaseHeader />
     <hr>
     <slot />
+    
     <hr>
-    <footer>Make with ❤️</footer>
+    <BaseFooter />
   </div>
 </template>
 

@@ -1,11 +1,8 @@
 <template>
-  <UNotifications />
   <NuxtLoadingIndicator />
  
   <NuxtLayout>
-    <UContainer>
-      <NuxtPage page-key="static" />
-    </UContainer>
+    <NuxtPage page-key="static" />
   </NuxtLayout>
 </template>
 

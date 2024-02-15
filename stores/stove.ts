@@ -2,8 +2,6 @@
 import { defineStore } from 'pinia'
 import type { StoveT } from '~~/types/stores/stove'
 
-const toast = useToast()
-
 export const useStovesStore = defineStore('author-store', {
     state: () => ({
         stoves: [] as StoveT[]
@@ -18,7 +16,7 @@ export const useStovesStore = defineStore('author-store', {
                 return data as StoveT[];
 
             } catch (e) {
-                toast.add({ title: `error ${e}` })
+                //toast
             }
         },
         async getOne(id: number) {
@@ -27,11 +25,11 @@ export const useStovesStore = defineStore('author-store', {
                 body: { id }
             })
                 .catch((e) => {
-                    toast.add({ title: `error ${e}` })
+                    //toast
                 })
                 .then(async () => {
                     await this.getAll();
-                    //alert
+                    //toast
                 });
         },
         async create(name: string) {
@@ -40,11 +38,11 @@ export const useStovesStore = defineStore('author-store', {
                 body: { name }
             })
                 .catch((e) => {
-                    toast.add({ title: `error ${e}` })
+                    //toast
                 })
                 .then(async () => {
                     await this.getAll();
-                    //alert
+                    //toast
                 });
         },
         async update(id: string, name: string) {
@@ -53,11 +51,11 @@ export const useStovesStore = defineStore('author-store', {
                 body: { name }
             })
                 .catch((e) => {
-                    //alert
+                    //toast
                 })
                 .then(async () => {
                     await this.getAll();
-                    //alert
+                    //toast
                 });
         },
 
@@ -66,11 +64,11 @@ export const useStovesStore = defineStore('author-store', {
                 method: 'DELETE'
             })
                 .catch((e) => {
-                    //alert
+                    //toast
                 })
                 .then(async () => {
                     await this.getAll();
-                    //alert
+                    //toast
                 });
         }
     }
