@@ -1,88 +1,70 @@
 import { defineStore } from 'pinia'
+import type { UserT, StateT } from '~~/types/stores/user';
 
-type User = {
-  id: number
-  name: string
-  email: string
-}
-
-type Error = string | boolean
-
-type State = {
-  auth: User | null
-  user: User | null
-  users: User[]
-  loading: boolean
-  error: Error
-}
 const config = useRuntimeConfig()
 
 export const useUserStore = defineStore('user', {
-  state: (): State => ({
+  state: (): StateT => ({
     auth: null,
     user: null,
     users: [],
-    loading: false,
-    error: false,
+    loading: false
   }),
   getters: {
     getAuth: (state) => state.auth,
     getUser: (state) => state.user,
     getUsers: (state) => state.users,
-    getError: (state) => state.error,
     isLoading: (state) => state.loading,
-    
+    isConnect: (state) => Boolean(state.auth),
   },
   actions: {
-    async fetchUser(id: number) {
+    async fetchUser(id: number): Promise<void> {
       this.loading = true;
 
       const { data: user, pending, error } = await useLazyFetch('/api/user', {
-        baseURL: config.public.apiUrl,
+        baseURL: config.api.baseURL,
         query: { id: id },
       })
-      .finally(() => {
-        this.loading = false;
-      })
+        .finally(() => {
+          this.loading = false;
+        })
 
-      if (!pending && !error) {
-        this.user = user.value as User
+      if (!pending.value && !error.value) {
+        this.user = user.value as UserT
       }
     },
-    async fetchAllUsers() {
+    async fetchAllUsers(): Promise<void> {
       this.loading = true;
 
       const { data: users, pending, error } = await useLazyFetch('/api/user/all', {
-        baseURL: config.public.apiUrl,
+        baseURL: config.api.baseURL,
       })
-      .finally(() => {
-        this.loading = false;
-      })
+        .finally(() => {
+          this.loading = false;
+        })
 
-      if (!pending && !error) {
-        this.users = users.value as User[]
+      if (!pending.value && !error.value) {
+        this.users = users.value as UserT[]
       }
     },
-    async login(email: string, id: number) {
-      
-      
+    async login(email: string, id: number): Promise<void> {
 
       const { data: user, pending, error } = await useFetch('/api/user', {
-        baseURL: config.public.apiUrl,
+        baseURL: config.api.baseURL,
         method: 'post',
         body: {
           id: id,
           email: email,
         },
       })
-      .finally(() => {
-        this.loading = false;
-      })
+        .finally(() => {
+          this.loading = false;
+        })
 
-      if (!pending && !error) {
-        this.auth = user.value as User
+      if (!pending.value && !error.value) {
+        this.auth = user.value as UserT
       }
-    
+
     },
   },
 })

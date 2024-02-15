@@ -1,8 +1,15 @@
+
+  
 <template>
-  <div>
+  <html>
     <NuxtLoadingIndicator />
+    <header>Pre Setup</header>
+    <hr>
     <slot />
-  </div>
+
+    <hr>
+    <footer>Make with ❤️</footer>
+  </html>
 </template>
 
 <script setup lang="ts">
@@ -18,3 +25,11 @@ useHead({
   }
 })
 </script>
+
+<style lang="scss">
+header,
+footer {
+  text-align: center;
+  font-weight: bold;
+}
+</style>

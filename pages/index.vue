@@ -10,7 +10,7 @@
       <UButton icon="i-heroicons-magnifying-glass" />
 
       <!-- test dark module -->
-      <theme />
+      <ColorMode />
 
       <!-- test animate -->
       <ul v-auto-animate>
@@ -27,6 +27,8 @@
 </template>
 
 <script setup lang="ts">
+import ColorMode from '~/components/shared/color-mode.vue';
+
 
 // test animate module ###########
 const items = ref(["😏","😐","😑","😒","😕"])
