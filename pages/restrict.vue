@@ -1,10 +1,8 @@
 <template>
   <div>
-    <NuxtLayout>
-      <NuxtLink to="/">
-        voltar pro inicio
-      </NuxtLink>
-    </NuxtLayout>
+    <NuxtLink to="/">
+      voltar pro inicio
+    </NuxtLink>
   </div>
 </template>
   
