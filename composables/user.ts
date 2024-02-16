@@ -64,7 +64,9 @@ export const useUserStore = defineStore('user', {
       if (!pending.value && !error.value) {
         this.auth = user.value as UserT
       }
-
     },
   },
 })
+
+if (import.meta.hot)
+  import.meta.hot.accept(acceptHMRUpdate(useAuthStore, import.meta.hot))

@@ -1,37 +1,23 @@
+<script setup lang="ts">
+const online = useOnline()
+</script>
+
 <template>
   <div>
-    <NuxtLink to="/home">
-      home
-    </NuxtLink>
-
-    <!-- test icon module -->
-    <Icon name="uil:github" />
-
-    <!-- test dark module -->
-    <BaseColorMode />
-
-    <!-- test animate -->
-    <ul v-auto-animate>
-      <li
-        v-for="item in items"
-        :key="item"
-        @click="removeItem(item)"
-      >
-        {{ item }}
-      </li>
-    </ul>
+    <Logos mb-6 />
+    <Suspense>
+      <ClientOnly>
+        <PageView v-if="online" />
+        <div v-else text-gray:80>
+          You're offline
+        </div>
+      </ClientOnly>
+      <template #fallback>
+        <div italic op50>
+          <span animate-pulse>Loading...</span>
+        </div>
+      </template>
+    </Suspense>
+    <InputEntry />
   </div>
 </template>
-
-<script setup lang="ts">
-//   import { useNotification } from '~/composables/useNotification'
-
-// const { error, warn, info, success } = useNotification()
-
-// test animate module ###########
-const items = ref(["😏","😐","😑","😒","😕"])
-
-function removeItem(toRemove: string) {
-  items.value = items.value.filter((item) => item !== toRemove)
-}
-</script>

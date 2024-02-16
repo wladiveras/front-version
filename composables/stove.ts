@@ -9,11 +9,11 @@ export const useStovesStore = defineStore('author-store', {
     actions: {
         async getAll() {
             try {
-                const data = await $fetch<StoveT[]>('/api/stove/all');
+                const data = await $fetch<StoveT[]>('/api/stove/all')
 
-                this.stoves = data;
+                this.stoves = data
 
-                return data as StoveT[];
+                return data as StoveT[]
 
             } catch (e) {
                 //toast
@@ -28,9 +28,9 @@ export const useStovesStore = defineStore('author-store', {
                     //toast
                 })
                 .then(async () => {
-                    await this.getAll();
+                    await this.getAll()
                     //toast
-                });
+                })
         },
         async create(name: string) {
             await $fetch('/api/stove', {
@@ -41,9 +41,9 @@ export const useStovesStore = defineStore('author-store', {
                     //toast
                 })
                 .then(async () => {
-                    await this.getAll();
+                    await this.getAll()
                     //toast
-                });
+                })
         },
         async update(id: string, name: string) {
             await $fetch(`/api/stove/${id}`, {
@@ -54,9 +54,9 @@ export const useStovesStore = defineStore('author-store', {
                     //toast
                 })
                 .then(async () => {
-                    await this.getAll();
+                    await this.getAll()
                     //toast
-                });
+                })
         },
 
         async remove(id: string) {
@@ -67,9 +67,12 @@ export const useStovesStore = defineStore('author-store', {
                     //toast
                 })
                 .then(async () => {
-                    await this.getAll();
+                    await this.getAll()
                     //toast
-                });
+                })
         }
     }
-});
+})
+
+if (import.meta.hot)
+  import.meta.hot.accept(acceptHMRUpdate(useAuthStore, import.meta.hot))

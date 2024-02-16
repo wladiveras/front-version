@@ -1,15 +1,69 @@
-export default defineNuxtConfig({
-  ssr: false,
-  devtools: { enabled: true },
+import { pwa } from './config/pwa'
+import { appName, appDescription, AppUrl, ApiUrl } from './constants/index'
 
+export default defineNuxtConfig({
+  modules: [
+    '@vueuse/nuxt',
+    '@unocss/nuxt',
+    '@pinia/nuxt',
+    '@nuxtjs/color-mode',
+    '@vite-pwa/nuxt',
+    'nuxt-module-eslint-config',
+  ],
+
+  experimental: {
+    payloadExtraction: false,
+    renderJsonPayloads: true,
+    typedPages: true,
+  },
+
+  css: [
+    '@unocss/reset/tailwind.css',
+  ],
+
+  colorMode: {
+    classSuffix: '',
+  },
+
+  nitro: {
+    esbuild: {
+      options: {
+        target: 'esnext',
+      },
+    },
+    prerender: {
+      crawlLinks: false,
+      routes: ['/'],
+      ignore: ['/hi'],
+    },
+  },
+
+  app: {
+    head: {
+      viewport: 'width=device-width,initial-scale=1',
+      link: [
+        { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/nuxt.svg' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+      ],
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'description', content: appDescription },
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
+        { name: 'theme-color', media: '(prefers-color-scheme: light)', content: 'white' },
+        { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#222222'},
+      ],
+    },
+  },
+  
   runtimeConfig: {
     public: {
-      name: process.env.NUXT_PROJECT_NAME || 'Nuxt',
-      description: process.env.NUXT_PROJECT_DESCRIPTION || 'Power of Javascript empowered with javascript',
-      baseURL: process.env.NUXT_PUBLIC_APP_BASE,
+      name: appName,
+      description: appDescription,
+      baseURL: AppUrl,
     },
     api: {
-      baseURL: process.env.NUXT_PUBLIC_API_BASE,
+      baseURL: ApiUrl,
       headers: {
         'Content-Type': 'application/json',
         //'Authorization': 'Auth token'
@@ -17,78 +71,17 @@ export default defineNuxtConfig({
     }
   },
 
-  app: {
-    head: {
-      title: 'Interview Project',
-      meta: [
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'ElementPlus + Nuxt3',
-        },
-      ],
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    }
+  pwa,
+
+  devtools: {
+    enabled: true,
   },
 
-  css: ['~/assets/scss/index.scss'],
-
-  modules: [
-    '@pinia/nuxt',
-    '@vueuse/nuxt',
-    '@unocss/nuxt',
-    '@element-plus/nuxt',
-    '@nuxtjs/eslint-module',
-    '@formkit/auto-animate',
-    '@nuxtjs/google-fonts',
-    '@nuxtjs/color-mode',
-    'nuxt-icon'
-  ],
-
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `@use "@/assets/scss/element/index.scss" as element;`,
-        },
-      },
-    },
+  features: {
+    inlineStyles: false,
   },
 
-  unocss: {
-    uno: true,
-    attributify: true,
-    icons: {
-      scale: 1.2,
-    },
+  eslintConfig: {
+    setup: false,
   },
-
-  elementPlus: {
-    icon: 'ElIcon',
-    importStyle: 'scss',
-    themes: ['dark'],
-  },
-
-  colorMode: {
-    preference: 'dark'
-  },
-
-  vueuse: {
-    ssrHandlers: true,
-  },
-
-  typescript: {
-    typeCheck: true,
-    strict: true,
-    shim: false,
-  },
-
-  googleFonts: {
-    display: 'swap',
-    download: true,
-    families: {
-      'DM+Sans': [400, 500, 600, 700]
-    }
-  }
 })
