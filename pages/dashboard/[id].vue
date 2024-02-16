@@ -1,5 +1,9 @@
 <script setup lang="ts">
 const online = useOnline()
+
+definePageMeta({
+  layout: 'home',
+})
 </script>
 
 <template>
@@ -7,7 +11,7 @@ const online = useOnline()
     <Logos mb-6 />
     <Suspense>
       <ClientOnly>
-        <Page v-if="online" />
+        <PageDashboard v-if="online" />
 
         <div v-else text-gray:80>
           You're offline

@@ -1,5 +1,5 @@
 import { pwa } from './config/pwa'
-import { appName, appDescription, AppUrl, ApiUrl } from './constants/index'
+import { ApiUrl, AppUrl, appDescription, appName } from './constants/index'
 
 export default defineNuxtConfig({
   modules: [
@@ -34,7 +34,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: false,
       routes: ['/'],
-      ignore: ['/hi'],
+      ignore: ['/dashboard'],
     },
   },
 
@@ -51,11 +51,11 @@ export default defineNuxtConfig({
         { name: 'description', content: appDescription },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
         { name: 'theme-color', media: '(prefers-color-scheme: light)', content: 'white' },
-        { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#222222'},
+        { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#222222' },
       ],
     },
   },
-  
+
   runtimeConfig: {
     public: {
       name: appName,
@@ -66,9 +66,9 @@ export default defineNuxtConfig({
       baseURL: ApiUrl,
       headers: {
         'Content-Type': 'application/json',
-        //'Authorization': 'Auth token'
-      }
-    }
+        // 'Authorization': 'Auth token'
+      },
+    },
   },
 
   pwa,

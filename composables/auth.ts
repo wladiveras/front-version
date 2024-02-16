@@ -8,7 +8,6 @@ export const useAuthStore = defineStore('auth', () => {
   const usedNames = computed(() => Array.from(previousNames.value))
   const otherNames = computed(() => usedNames.value.filter((name: any) => name !== savedName.value))
 
-
   function setNewName(name: string) {
     if (savedName.value)
       previousNames.value.add(savedName.value)

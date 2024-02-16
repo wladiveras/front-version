@@ -14,6 +14,9 @@ devDependencies:
   '@iconify-json/twemoji':
     specifier: ^1.1.15
     version: 1.1.15
+  '@iconify/json':
+    specifier: ^2.2.183
+    version: 2.2.183
   '@nuxtjs/color-mode':
     specifier: ^3.3.2
     version: 3.3.2(rollup@2.79.1)
@@ -1960,6 +1963,13 @@ packages:
     resolution: {integrity: sha512-ze2CAOwIWBKIP6ih6qMDItasVjRicktl2Qr3/ohZSMToAHm9z3Q6HCwE48eT0+D+uFpGBlNRQ22HHyE5izyhDg==}
     dependencies:
       '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify/json@2.2.183:
+    resolution: {integrity: sha512-LvlU0SWHlDGEmX9XZpK5lVVANRQNdToF2Vd0CgV+q6ntEYtza2QEvKHY318m+9sCEMm5CH6RkaSOtWTguAENjQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
+      pathe: 1.1.2
     dev: true
 
   /@iconify/types@2.0.0:

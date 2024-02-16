@@ -17,6 +17,7 @@
     "@antfu/eslint-config": "^2.6.4",
     "@iconify-json/carbon": "^1.1.30",
     "@iconify-json/twemoji": "^1.1.15",
+    "@iconify/json": "^2.2.183",
     "@nuxtjs/color-mode": "^3.3.2",
     "@pinia/nuxt": "^0.5.1",
     "@unocss/eslint-config": "^0.58.5",
