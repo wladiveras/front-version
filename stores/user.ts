@@ -1,8 +1,6 @@
 import { defineStore } from 'pinia'
 import type { StateT, UserT } from '~~/types/stores/user'
 
-const config = useRuntimeConfig()
-
 export const useUserStore = defineStore('user', {
   state: (): StateT => ({
     auth: null,
@@ -22,7 +20,7 @@ export const useUserStore = defineStore('user', {
       this.loading = true
 
       const { data: user, pending, error } = await useLazyFetch('/api/user', {
-        baseURL: config.api.baseURL,
+        baseURL: ApiUrl,
         query: { id },
       })
         .finally(() => {
@@ -36,7 +34,7 @@ export const useUserStore = defineStore('user', {
       this.loading = true
 
       const { data: users, pending, error } = await useLazyFetch('/api/user/all', {
-        baseURL: config.api.baseURL,
+        baseURL: ApiUrl,
       })
         .finally(() => {
           this.loading = false
@@ -47,7 +45,7 @@ export const useUserStore = defineStore('user', {
     },
     async login(email: string, id: number): Promise<void> {
       const { data: user, pending, error } = await useFetch('/api/user', {
-        baseURL: config.api.baseURL,
+        baseURL: ApiUrl,
         method: 'post',
         body: {
           id,
@@ -63,6 +61,3 @@ export const useUserStore = defineStore('user', {
     },
   },
 })
-
-if (import.meta.hot)
-  import.meta.hot.accept(acceptHMRUpdate(useAuthStore, import.meta.hot))

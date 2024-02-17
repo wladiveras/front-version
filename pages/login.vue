@@ -1,16 +1,12 @@
 <script setup lang="ts">
 const online = useOnline()
-
-definePageMeta({
-  layout: 'home',
-})
 </script>
 
 <template>
   <div>
     <Suspense>
       <ClientOnly>
-        <PageDashboard v-if="online" />
+        <PageLogin v-if="online" />
 
         <div v-else text-gray:80>
           You're offline

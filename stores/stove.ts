@@ -76,6 +76,3 @@ export const useStovesStore = defineStore('author-store', {
     },
   },
 })
-
-if (import.meta.hot)
-  import.meta.hot.accept(acceptHMRUpdate(useAuthStore, import.meta.hot))

@@ -5,7 +5,7 @@ useHead({
   meta: [{
     id: 'theme-color',
     name: 'theme-color',
-    content: () => color.value === 'dark' ? '#222222' : '#ffffff',
+    content: () => color.value === 'dark' ? '.dark' : '.light',
   }],
 })
 
@@ -16,6 +16,6 @@ function toggleDark() {
 
 <template>
   <button class="!outline-none" @click="toggleDark">
-    <div class="i-carbon-sun dark:i-carbon-moon" />
+    <div class="i-meteocons:overcast-day-fill dark:i-meteocons:overcast-night-drizzle text-4xl text-gray-500 dark:text-gray-400" />
   </button>
 </template>

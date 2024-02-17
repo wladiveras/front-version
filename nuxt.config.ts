@@ -11,31 +11,16 @@ export default defineNuxtConfig({
     'nuxt-module-eslint-config',
   ],
 
-  experimental: {
-    payloadExtraction: false,
-    renderJsonPayloads: true,
-    typedPages: true,
-  },
-
   css: [
     '@unocss/reset/tailwind.css',
   ],
 
-  colorMode: {
-    classSuffix: '',
+  pinia: {
+    storesDirs: ['./stores/**'],
   },
 
-  nitro: {
-    esbuild: {
-      options: {
-        target: 'esnext',
-      },
-    },
-    prerender: {
-      crawlLinks: false,
-      routes: ['/'],
-      ignore: ['/dashboard'],
-    },
+  colorMode: {
+    classSuffix: '',
   },
 
   app: {

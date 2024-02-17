@@ -1,7 +1,9 @@
 <template>
-  <main class="px-10 py-20 text-center">
+  <main class="h-screen flex flex-col justify-between">
     <AppHeader />
-    <slot />
+    <main class="mb-auto min-h-screen bg-white dark:bg-slate-900">
+      <slot />
+    </main>
     <AppFooter />
   </main>
 </template>
