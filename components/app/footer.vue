@@ -1,5 +1,5 @@
 <template>
-  <footer class="solid bottom-0 left-0 z-20 w-full border-t border-gray-200 bg-white p-4 shadow md:flex md:items-center md:justify-between dark:border-gray-600 dark:bg-gray-800 md:p-6">
+  <footer class="bottom-0 left-0 z-20 w-full border-t border-gray-200 bg-white p-4 shadow md:flex md:items-center md:justify-between dark:border-gray-600 dark:bg-gray-800 md:p-6">
     <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
       © 2023 <a href="https://linkedin.com/in/wladiveras" class="hover:underline">Wladi Veras</a>. All Rights Reserved.
     </span>

@@ -16,7 +16,8 @@ export default defineNuxtConfig({
   ],
 
   pinia: {
-    storesDirs: ['./stores/**'],
+    storesDirs: ['./stores/**',
+    ],
   },
 
   colorMode: {
@@ -39,6 +40,7 @@ export default defineNuxtConfig({
         { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#222222' },
       ],
     },
+    pageTransition: { name: 'page', mode: 'out-in' },
   },
 
   runtimeConfig: {
@@ -46,17 +48,16 @@ export default defineNuxtConfig({
       name: appName,
       description: appDescription,
       baseURL: AppUrl,
-    },
-    api: {
-      baseURL: ApiUrl,
+      apiURL: ApiUrl,
       headers: {
         'Content-Type': 'application/json',
-        // 'Authorization': 'Auth token'
       },
     },
   },
 
   pwa,
+
+  ssr: false,
 
   devtools: {
     enabled: true,
